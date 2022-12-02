@@ -1,0 +1,9 @@
+sensor1,sensor2,temperature1,temperature2
+yellow,green,17.7,18.0
+green,red,18.0,18.0
+yellow,red,17.7,18.0
+yellow,green/red,16.7,17.0
+yellow,green/red,17.0,17.2
+yellow,green/red,17.1,17.3
+green,bleu,18.3,18.4
+food,yellow,13.6,14.1
