@@ -5,9 +5,11 @@ def main():
     file_rec="records.csv"
     df_rec = read_records_file(file_rec)
     
+    results_dict = dict()
     for location in get_locations_array(df_rec):
         df_loc = get_all_data_for_location(location, df_rec)
         write_result(location, df_loc)
+        results_dict[location] = df_loc 
 
 def read_records_file(filename: str) -> pd.DataFrame:
     return pd.read_csv(filename)
