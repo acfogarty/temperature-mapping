@@ -1,2 +1,4 @@
 data/
 results/
+records.csv
+cp_to_s3.sh
