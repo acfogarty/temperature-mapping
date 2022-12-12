@@ -42,3 +42,18 @@ plt.plot([0, df['pair'].nunique()], [0, 0], linestyle=':')
 plt.xlabel('pair of sensors')
 plt.ylabel('temperature difference / degrees')
 plt.show()
+
+# heatmap of temperature difference matrix
+df_inv = pd.DataFrame({"sensor1": df["sensor2"].values,
+                       "sensor2": df["sensor1"].values,
+                       "temperature1": df["temperature2"].values,
+                       "temperature2": df["temperature1"].values})
+df_all = pd.concat((df, df_inv))
+
+df_all['error'] = df_all['temperature1'] - df_all['temperature2']
+df_g = df_all.groupby(['sensor1',
+                       'sensor2'], as_index=False)['error'].median()
+df_p = df_g.pivot(index="sensor1", columns="sensor2", values="error")
+sns.heatmap(df_p, cmap='coolwarm', vmin=-0.4, vmax=+0.4)
+plt.title('Median delta-temperature value for each sensor pair')
+plt.show()
